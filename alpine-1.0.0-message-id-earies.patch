@@ -1,0 +1,46 @@
+*** pith/reply.c.orig	Tue Jul  8 22:15:35 2008
+--- pith/reply.c	Tue Jul  8 23:10:12 2008
+***************
+*** 43,52 ****
+--- 43,56 ----
+  #include "../pith/text.h"
+  #include "../pith/list.h"
+  #include "../pith/ablookup.h"
+  #include "../pith/mailcmd.h"
+  
++ #define MOD_UA "webmail"
++ #define MOD_SYSTYPE "linux"
++ #define MOD_ALPINE_VERSION "1.00"
++ 
+  
+  /*
+   * Internal prototypes
+   */
+  void	 bounce_mask_header(char **, char *);
+***************
+*** 3146,3157 ****
+  		 : cpystr(ps_global->hostname);
+      
+      if(!hostpart)
+        hostpart = cpystr("huh");
+  
+!     snprintf(idbuf, sizeof(idbuf), "<alpine.%.4s.%.20s.%02d%02d%02d%02d%02d%02d%X.%d@%.50s>",
+! 	    SYSTYPE, ALPINE_VERSION, (now_x->tm_year) % 100, now_x->tm_mon + 1,
+  	    now_x->tm_mday, now_x->tm_hour, now_x->tm_min, now_x->tm_sec, 
+  	    cnt, getpid(), hostpart);
+      idbuf[sizeof(idbuf)-1] = '\0';
+  
+      id = cpystr(idbuf);
+--- 3150,3161 ----
+  		 : cpystr(ps_global->hostname);
+      
+      if(!hostpart)
+        hostpart = cpystr("huh");
+  
+!     snprintf(idbuf, sizeof(idbuf), "<%s.%s.%.20s.%02d%02d%02d%02d%02d%02d%X.%d@%.50s>",
+! 	    MOD_UA, MOD_SYSTYPE, MOD_ALPINE_VERSION, (now_x->tm_year) % 100, now_x->tm_mon + 1,
+  	    now_x->tm_mday, now_x->tm_hour, now_x->tm_min, now_x->tm_sec, 
+  	    cnt, getpid(), hostpart);
+      idbuf[sizeof(idbuf)-1] = '\0';
+  
+      id = cpystr(idbuf);
