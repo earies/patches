@@ -1,0 +1,35 @@
+#
+# http://mping.uninett.no/about.en.html
+# This patch replaces deprecated ICMP options as 
+# defined in netinet/icmp6.h
+#
+
+--- src/mping.c	2011-04-13 12:42:44.000000000 -0600
++++ src/mping.c	2011-04-13 12:46:10.000000000 -0600
+@@ -1704,7 +1704,7 @@
+                 case ICMP6_DST_UNREACH_ADMIN:
+                         printf("Administratively Prohibited\n");
+                         break;
+-                case ICMP6_DST_UNREACH_NOTNEIGHBOR:
++                case ICMP6_DST_UNREACH_BEYONDSCOPE:
+-                        printf("Not a Neighbour\n");
++                        printf("Beyond Scope\n");
+                         break;
+                 case ICMP6_DST_UNREACH_ADDR:
+@@ -1755,13 +1755,13 @@
+         case ICMP6_ECHO_REPLY:
+                 printf("Echo reply\n");
+                 break;
+-        case ICMP6_MEMBERSHIP_QUERY:
++        case MLD_LISTENER_QUERY:
+                 printf("Membership Query\n");
+                 break;
+-        case ICMP6_MEMBERSHIP_REPORT:
++        case MLD_LISTENER_REPORT:
+                 printf("MLD Report\n");
+                 break;
+-        case ICMP6_MEMBERSHIP_REDUCTION:
++        case MLD_LISTENER_REDUCTION:
+                 printf("MLD Reduction\n");
+                 break;
+ 	case ND_ROUTER_ADVERT:
