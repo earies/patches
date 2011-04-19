@@ -1,4 +1,4 @@
-diff -Nuarp openssh-5.7p1/auth2-pubkey.c openssh-5.7p1/auth2-pubkey.c
+
 --- openssh-5.7p1/auth2-pubkey.c	2010-11-30 16:50:14.000000000 -0800
 +++ openssh-5.7p1/auth2-pubkey.c	2011-01-23 21:21:10.000000000 -0800
 @@ -59,6 +59,10 @@
@@ -92,7 +92,7 @@ diff -Nuarp openssh-5.7p1/auth2-pubkey.c openssh-5.7p1/auth2-pubkey.c
  	debug("trying public key file %s", file);
  	f = auth_openkeyfile(file, pw, options.strict_modes);
  
-diff -Nuarp openssh-5.7p1/auth-rsa.c openssh-5.7p1/auth-rsa.c
+
 --- openssh-5.7p1/auth-rsa.c	2010-12-04 14:01:47.000000000 -0800
 +++ openssh-5.7p1/auth-rsa.c	2011-01-23 21:21:11.000000000 -0800
 @@ -174,10 +174,96 @@ auth_rsa_key_allowed(struct passwd *pw, 
@@ -192,7 +192,7 @@ diff -Nuarp openssh-5.7p1/auth-rsa.c openssh-5.7p1/auth-rsa.c
  	/* The authorized keys. */
  	file = authorized_keys_file(pw);
  	debug("trying public RSA key file %s", file);
-diff -Nuarp openssh-5.7p1/config.h.in openssh-5.7p1/config.h.in
+
 --- openssh-5.7p1/config.h.in	2011-01-22 01:29:01.000000000 -0800
 +++ openssh-5.7p1/config.h.in	2011-01-23 21:21:11.000000000 -0800
 @@ -596,6 +596,9 @@
@@ -205,7 +205,7 @@ diff -Nuarp openssh-5.7p1/config.h.in openssh-5.7p1/config.h.in
  /* Define if your libraries define login() */
  #undef HAVE_LOGIN
  
-diff -Nuarp openssh-5.7p1/configure openssh-5.7p1/configure
+
 --- openssh-5.7p1/configure	2011-01-22 01:29:11.000000000 -0800
 +++ openssh-5.7p1/configure	2011-01-23 21:21:11.000000000 -0800
 @@ -1348,6 +1348,7 @@ Optional Packages:
@@ -310,7 +310,7 @@ diff -Nuarp openssh-5.7p1/configure openssh-5.7p1/configure
  echo "              MD5 password support: $MD5_MSG"
  echo "                   libedit support: $LIBEDIT_MSG"
  echo "  Solaris process contract support: $SPC_MSG"
-diff -Nuarp openssh-5.7p1/configure.ac openssh-5.7p1/configure.ac
+
 --- openssh-5.7p1/configure.ac	2011-01-21 14:37:05.000000000 -0800
 +++ openssh-5.7p1/configure.ac	2011-01-23 21:21:11.000000000 -0800
 @@ -1424,6 +1424,37 @@ AC_ARG_WITH(audit,
@@ -359,7 +359,7 @@ diff -Nuarp openssh-5.7p1/configure.ac openssh-5.7p1/configure.ac
  echo "              MD5 password support: $MD5_MSG"
  echo "                   libedit support: $LIBEDIT_MSG"
  echo "  Solaris process contract support: $SPC_MSG"
-diff -Nuarp openssh-5.7p1/ldapauth.c openssh-5.7p1/ldapauth.c
+
 --- openssh-5.7p1/ldapauth.c	1969-12-31 16:00:00.000000000 -0800
 +++ openssh-5.7p1/ldapauth.c	2011-01-23 21:21:11.000000000 -0800
 @@ -0,0 +1,574 @@
@@ -937,7 +937,7 @@ diff -Nuarp openssh-5.7p1/ldapauth.c openssh-5.7p1/ldapauth.c
 +}
 +
 +#endif /* WITH_LDAP_PUBKEY */
-diff -Nuarp openssh-5.7p1/ldapauth.h openssh-5.7p1/ldapauth.h
+
 --- openssh-5.7p1/ldapauth.h	1969-12-31 16:00:00.000000000 -0800
 +++ openssh-5.7p1/ldapauth.h	2011-01-23 21:21:11.000000000 -0800
 @@ -0,0 +1,127 @@
@@ -1068,7 +1068,7 @@ diff -Nuarp openssh-5.7p1/ldapauth.h openssh-5.7p1/ldapauth.h
 +int ldap_ismember(ldap_opt_t *, const char *);
 +
 +#endif
-diff -Nuarp openssh-5.7p1/lpk-user-example.txt openssh-5.7p1/lpk-user-example.txt
+
 --- openssh-5.7p1/lpk-user-example.txt	1969-12-31 16:00:00.000000000 -0800
 +++ openssh-5.7p1/lpk-user-example.txt	2011-01-23 21:21:11.000000000 -0800
 @@ -0,0 +1,117 @@
@@ -1189,7 +1189,7 @@ diff -Nuarp openssh-5.7p1/lpk-user-example.txt openssh-5.7p1/lpk-user-example.tx
 +puTTY). Login should succeed.
 +
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-diff -Nuarp openssh-5.7p1/Makefile.in openssh-5.7p1/Makefile.in
+
 --- openssh-5.7p1/Makefile.in	2011-01-17 02:15:29.000000000 -0800
 +++ openssh-5.7p1/Makefile.in	2011-01-23 21:21:11.000000000 -0800
 @@ -93,7 +93,7 @@ SSHDOBJS=sshd.o auth-rhosts.o auth-passw
@@ -1201,7 +1201,7 @@ diff -Nuarp openssh-5.7p1/Makefile.in openssh-5.7p1/Makefile.in
  
  MANPAGES	= moduli.5.out scp.1.out ssh-add.1.out ssh-agent.1.out ssh-keygen.1.out ssh-keyscan.1.out ssh.1.out sshd.8.out sftp-server.8.out sftp.1.out ssh-rand-helper.8.out ssh-keysign.8.out ssh-pkcs11-helper.8.out sshd_config.5.out ssh_config.5.out
  MANPAGES_IN	= moduli.5 scp.1 ssh-add.1 ssh-agent.1 ssh-keygen.1 ssh-keyscan.1 ssh.1 sshd.8 sftp-server.8 sftp.1 ssh-rand-helper.8 ssh-keysign.8 ssh-pkcs11-helper.8 sshd_config.5 ssh_config.5
-diff -Nuarp openssh-5.7p1/openssh-lpk_openldap.schema openssh-5.7p1/openssh-lpk_openldap.schema
+
 --- openssh-5.7p1/openssh-lpk_openldap.schema	1969-12-31 16:00:00.000000000 -0800
 +++ openssh-5.7p1/openssh-lpk_openldap.schema	2011-01-23 21:21:11.000000000 -0800
 @@ -0,0 +1,19 @@
@@ -1224,7 +1224,7 @@ diff -Nuarp openssh-5.7p1/openssh-lpk_openldap.schema openssh-5.7p1/openssh-lpk_
 +	DESC 'MANDATORY: OpenSSH LPK objectclass'
 +	MUST ( sshPublicKey $ uid ) 
 +	)
-diff -Nuarp openssh-5.7p1/openssh-lpk_sun.schema openssh-5.7p1/openssh-lpk_sun.schema
+
 --- openssh-5.7p1/openssh-lpk_sun.schema	1969-12-31 16:00:00.000000000 -0800
 +++ openssh-5.7p1/openssh-lpk_sun.schema	2011-01-23 21:21:11.000000000 -0800
 @@ -0,0 +1,21 @@
@@ -1249,7 +1249,7 @@ diff -Nuarp openssh-5.7p1/openssh-lpk_sun.schema openssh-5.7p1/openssh-lpk_sun.s
 +	DESC 'MANDATORY: OpenSSH LPK objectclass'
 +	MUST ( sshPublicKey $ uid ) 
 +	)
-diff -Nuarp openssh-5.7p1/README.lpk openssh-5.7p1/README.lpk
+
 --- openssh-5.7p1/README.lpk	1969-12-31 16:00:00.000000000 -0800
 +++ openssh-5.7p1/README.lpk	2011-01-23 21:21:11.000000000 -0800
 @@ -0,0 +1,267 @@
@@ -1520,7 +1520,7 @@ diff -Nuarp openssh-5.7p1/README.lpk openssh-5.7p1/README.lpk
 +- CONTACT :
 +  - Eric AUGE <eau@phear.org>
 +  - Andrea Barisani <andrea@inversepath.com>
-diff -Nuarp openssh-5.7p1/servconf.c openssh-5.7p1/servconf.c
+
 --- openssh-5.7p1/servconf.c	2010-11-19 20:19:38.000000000 -0800
 +++ openssh-5.7p1/servconf.c	2011-01-23 21:21:11.000000000 -0800
 @@ -46,6 +46,10 @@
@@ -1773,7 +1773,7 @@ diff -Nuarp openssh-5.7p1/servconf.c openssh-5.7p1/servconf.c
  
  	default:
  		fatal("%s line %d: Missing handler for opcode %s (%d)",
-diff -Nuarp openssh-5.7p1/servconf.h openssh-5.7p1/servconf.h
+
 --- openssh-5.7p1/servconf.h	2010-11-19 20:19:38.000000000 -0800
 +++ openssh-5.7p1/servconf.h	2011-01-23 21:21:11.000000000 -0800
 @@ -16,6 +16,10 @@
@@ -1797,7 +1797,7 @@ diff -Nuarp openssh-5.7p1/servconf.h openssh-5.7p1/servconf.h
  
  	int	num_permitted_opens;
  
-diff -Nuarp openssh-5.7p1/sshd.c openssh-5.7p1/sshd.c
+
 --- openssh-5.7p1/sshd.c	2011-01-10 22:20:31.000000000 -0800
 +++ openssh-5.7p1/sshd.c	2011-01-23 21:21:11.000000000 -0800
 @@ -127,6 +127,10 @@ int allow_severity;
@@ -1828,7 +1828,7 @@ diff -Nuarp openssh-5.7p1/sshd.c openssh-5.7p1/sshd.c
  	debug("sshd version %.100s", SSH_RELEASE);
  
  	/* Store privilege separation user for later use if required. */
-diff -Nuarp openssh-5.7p1/sshd_config openssh-5.7p1/sshd_config
+
 --- openssh-5.7p1/sshd_config	2010-09-09 18:20:12.000000000 -0700
 +++ openssh-5.7p1/sshd_config	2011-01-23 21:21:12.000000000 -0800
 @@ -108,6 +108,22 @@
@@ -1854,7 +1854,7 @@ diff -Nuarp openssh-5.7p1/sshd_config openssh-5.7p1/sshd_config
  # override default of no subsystems
  Subsystem	sftp	/usr/libexec/sftp-server
  
-diff -Nuarp openssh-5.7p1/sshd_config.5 openssh-5.7p1/sshd_config.5
+
 --- openssh-5.7p1/sshd_config.5	2010-12-25 19:26:48.000000000 -0800
 +++ openssh-5.7p1/sshd_config.5	2011-01-23 21:21:12.000000000 -0800
 @@ -1141,6 +1141,62 @@ Specifies the full pathname of the
@@ -1920,7 +1920,7 @@ diff -Nuarp openssh-5.7p1/sshd_config.5 openssh-5.7p1/sshd_config.5
  .El
  .Sh TIME FORMATS
  .Xr sshd 8
-diff -Nuarp openssh-5.7p1/version.h openssh-5.7p1/version.h
+
 --- openssh-5.7p1/version.h	2011-01-22 01:21:36.000000000 -0800
 +++ openssh-5.7p1/version.h	2011-01-23 21:21:12.000000000 -0800
 @@ -2,5 +2,6 @@
